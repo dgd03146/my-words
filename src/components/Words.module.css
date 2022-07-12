@@ -1,0 +1,15 @@
+.words {
+  height: 100%;
+  position: relative;
+}
+.words::before {
+  content: '';
+  opacity: 0.4;
+  background-image: url('../../public/assets/background.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}

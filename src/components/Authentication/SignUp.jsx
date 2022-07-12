@@ -6,6 +6,10 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../shared/firebase';
 
 const SignUp = () => {
+  const id_ref = useRef(null);
+  const name_ref = useRef(null);
+  const pw_ref = useRef(null);
+
   const onSignUp = async () => {
     // validation 체크 해줘야함
     // if(id_ref.current.value ===""){
@@ -28,10 +32,6 @@ const SignUp = () => {
     name_ref.current.value = '';
     pw_ref.current.value = '';
   };
-
-  const id_ref = useRef(null);
-  const name_ref = useRef(null);
-  const pw_ref = useRef(null);
 
   return (
     <div className={styles.signUp}>
