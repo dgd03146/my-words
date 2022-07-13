@@ -3,12 +3,19 @@ import styles from './Word.module.css';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useNavigate } from 'react-router-dom';
+
 const Word = ({ term, pronunciation, definition, example, translation }) => {
+  let navigate = useNavigate();
+
   const [check, setCheck] = useState(false);
 
   const checkHandler = () => {
-    console.log('check');
     setCheck((prevState) => !prevState);
+  };
+
+  const goToEdit = () => {
+    navigate('/detail');
   };
 
   return (
@@ -19,7 +26,7 @@ const Word = ({ term, pronunciation, definition, example, translation }) => {
           <button onClick={checkHandler}>
             <CheckCircleIcon />
           </button>
-          <button>
+          <button onClick={goToEdit}>
             <EditIcon />
           </button>
           <button>

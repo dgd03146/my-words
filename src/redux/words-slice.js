@@ -43,7 +43,7 @@ const initialState = {
       translation: '영어는 어렵다.'
     },
     {
-      id: 5,
+      id: 6,
       term: 'English555',
       pronunciation: '잉글리쉬',
       definition: '영어',
@@ -51,7 +51,7 @@ const initialState = {
       translation: '영어는 어렵다.'
     },
     {
-      id: 5,
+      id: 7,
       term: 'English555',
       pronunciation: '잉글리쉬',
       definition: '영어',
@@ -59,7 +59,7 @@ const initialState = {
       translation: '영어는 어렵다.'
     },
     {
-      id: 5,
+      id: 8,
       term: 'English555',
       pronunciation: '잉글리쉬',
       definition: '영어',
@@ -67,7 +67,7 @@ const initialState = {
       translation: '영어는 어렵다.'
     },
     {
-      id: 5,
+      id: 9,
       term: 'English555',
       pronunciation: '잉글리쉬',
       definition: '영어',
@@ -75,7 +75,7 @@ const initialState = {
       translation: '영어는 어렵다.'
     },
     {
-      id: 5,
+      id: 10,
       term: 'English555',
       pronunciation: '잉글리쉬',
       definition: '영어',
@@ -83,7 +83,7 @@ const initialState = {
       translation: '영어는 어렵다.'
     },
     {
-      id: 5,
+      id: 11,
       term: 'English555',
       pronunciation: '잉글리쉬',
       definition: '영어',
@@ -91,7 +91,7 @@ const initialState = {
       translation: '영어는 어렵다.'
     },
     {
-      id: 5,
+      id: 12,
       term: 'English555',
       pronunciation: '잉글리쉬',
       definition: '영어',
@@ -99,7 +99,7 @@ const initialState = {
       translation: '영어는 어렵다.'
     },
     {
-      id: 5,
+      id: 13,
       term: 'English555',
       pronunciation: '잉글리쉬',
       definition: '영어',

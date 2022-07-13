@@ -4,10 +4,17 @@ import { auth } from '../../shared/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { getDocs, where, query, collection } from 'firebase/firestore';
 import { db } from '../../shared/firebase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../redux/auth-slice';
 
 const Login = () => {
+  let navigate = useNavigate();
   const id_ref = useRef(null);
   const pw_ref = useRef(null);
+  let username = '';
+
+  const dispatch = useDispatch();
 
   const onLogin = async () => {
     const user = await signInWithEmailAndPassword(
@@ -16,15 +23,16 @@ const Login = () => {
       pw_ref.current.value
     );
 
-    console.log(user);
-
     const user_docs = await getDocs(
       query(collection(db, 'users'), where('user_id', '==', user.user.email))
     );
 
     user_docs.forEach((u) => {
-      console.log(u.data()); // user 정보 가지고 옴. state에 넣어서 이름 얻을 수 있다.
+      // console.log(u.data(), 'user data'); // user 정보 가지고 옴. state에 넣어서 이름 얻을 수 있다.
+      username = u.data().name;
     });
+
+    dispatch(authActions.logIn(username));
   };
 
   return (
@@ -39,9 +47,14 @@ const Login = () => {
           <button className={styles.loginBtn} onClick={onLogin}>
             로그인
           </button>
-          <p>
-            <span className={styles.signUpBtn}>회원가입</span>
-          </p>
+          <button
+            className={styles.signUpBtn}
+            onClick={() => {
+              navigate('/signUp');
+            }}
+          >
+            회원가입
+          </button>
         </div>
         <hr />
         <p className={styles.description}>

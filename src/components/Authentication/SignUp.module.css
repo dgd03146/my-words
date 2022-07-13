@@ -71,7 +71,10 @@ hr {
 }
 
 .loginBtn {
-  font-size: 0.9rem;
+  margin: 0.5rem;
+  background-color: transparent;
+  border: none;
+  font-size: 0.95rem;
   color: gray;
 }
 
@@ -83,4 +86,7 @@ hr {
 .snsLogin img {
   width: 2rem;
   height: 2rem;
+}
+
+@media screen and (max-width: 600px) {
 }

@@ -6,21 +6,20 @@ import { useEffect } from 'react';
 import { auth } from './shared/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import Home from './components/Home';
-import { useDispatch, useSelector } from 'react-redux';
-import { authActions } from './redux/auth-slice';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-
-  const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   // 로그인 체크
   const loginCheck = async (user) => {
     if (user) {
-      // user가 있으면 true
-      dispatch(authActions.logIn());
+      // user가 있으면
+      navigate('/words');
     } else {
-      dispatch(authActions.logOut());
+      navigate('/login');
     }
   };
 
@@ -32,12 +31,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/signup" element={<SignUp />} />
-        {isLoggedIn ? ( // login이 되어있으면 Home으로
-          <Route path="/" element={<Home />} />
-        ) : (
-          <Route path="/" element={<Login />} />
-        )}
-        <Route path="/login" element={<Login />} />
+        {!isLoggedIn && <Route path="/login" element={<Login />} />}
+        <Route path="/*" element={<Home />} />
       </Routes>
     </div>
   );

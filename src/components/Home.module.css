@@ -3,11 +3,12 @@
   height: 100%;
 }
 .addBtn {
-  position: sticky;
+  position: fixed;
   border: none;
   outline: none;
   background-color: transparent;
   bottom: 0;
+  right: 0;
 }
 
 .addBtn svg {
@@ -15,6 +16,6 @@
   font-size: 3.5rem;
 }
 .addBtn:hover {
-  transition: ease-in 500ms;
-  transform: rotate(180deg);
+  transition: ease-in 1000ms;
+  transform: rotate(900deg);
 }

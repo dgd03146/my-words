@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Header.module.css';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../shared/firebase';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../redux/auth-slice';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const logoutHandler = () => {
     signOut(auth);
+    dispatch(authActions.logOut());
   };
+
+  const username = useSelector((state) => state.auth.userName); // username redux에서 가져오기. // 이름을 가져오는데 시간이 걸린다.. 바로 가져오게???
 
   return (
     <header className={styles.header}>
       <h1 className={styles.title}>MY WORDS</h1>
       <div className={styles.rightBox}>
         <p className={styles.usernameBox}>
-          <span className={styles.username}>{'username'}</span>님
+          <span className={styles.username}>{username}</span>님
         </p>
         <button className={styles.logout} onClick={logoutHandler}>
           로그아웃

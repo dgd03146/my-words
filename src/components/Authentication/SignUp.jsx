@@ -4,8 +4,10 @@ import { auth } from '../../shared/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../shared/firebase';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+  let navigate = useNavigate();
   const id_ref = useRef(null);
   const name_ref = useRef(null);
   const pw_ref = useRef(null);
@@ -45,9 +47,14 @@ const SignUp = () => {
         <button className={styles.signUpBtn} onClick={onSignUp}>
           회원가입
         </button>
-        <p>
-          <span className={styles.loginBtn}>로그인</span>
-        </p>
+        <button
+          className={styles.loginBtn}
+          onClick={() => {
+            navigate('/login');
+          }}
+        >
+          로그인
+        </button>
       </div>
       <hr />
       <p className={styles.description}>
