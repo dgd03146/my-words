@@ -2,27 +2,26 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import SignUp from './components/Authentication/SignUp';
 import Login from './components/Authentication/Login';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { auth } from './shared/firebase';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import Home from './components/Home';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from './redux/auth-slice';
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const dispatch = useDispatch();
 
   // 로그인 체크
-
   const loginCheck = async (user) => {
     if (user) {
       // user가 있으면 true
-      setIsLogin(true);
+      dispatch(authActions.logIn());
     } else {
-      setIsLogin(false);
+      dispatch(authActions.logOut());
     }
-  };
-
-  const onSignOut = () => {
-    signOut(auth);
   };
 
   useEffect(() => {
@@ -33,8 +32,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/signup" element={<SignUp />} />
-        {isLogin ? ( // login이 되어있으면 Home으로
-          <Route path="/" element={<Home onSignOut={onSignOut} />} />
+        {isLoggedIn ? ( // login이 되어있으면 Home으로
+          <Route path="/" element={<Home />} />
         ) : (
           <Route path="/" element={<Login />} />
         )}
