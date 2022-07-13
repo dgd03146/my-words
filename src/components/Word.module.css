@@ -1,0 +1,59 @@
+.word {
+  border: solid 1px #1e319d;
+  border-radius: 1rem;
+  min-width: 30rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.word p {
+  margin: 0.5rem 0;
+}
+
+.check {
+  background-color: #3748aa;
+  color: white;
+}
+
+svg {
+  color: #1e319d;
+}
+
+.check svg {
+  color: rgb(206, 234, 250);
+}
+
+.check .example {
+  color: rgb(206, 234, 250);
+}
+
+.upBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.term {
+  margin: 0;
+}
+
+.buttonBox button {
+  background-color: transparent;
+  margin: 0.1rem;
+  border: none;
+  outline: none;
+}
+
+.pronunciation {
+  font-size: 0.9rem;
+}
+
+.definition {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.example {
+  color: rgb(6, 133, 252);
+  font-weight: 400;
+}

@@ -4,43 +4,107 @@ const initialState = {
   words: [
     {
       id: 1,
-      word: 'English',
-      발음: '잉글리쉬',
-      의미: '영어',
-      예문: 'English is difficult',
-      해석: '영어는 어렵다.'
+      term: 'English',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
     },
     {
       id: 2,
-      word: 'English2',
-      발음: '잉글리쉬',
-      의미: '영어',
-      예문: 'English is difficult',
-      해석: '영어는 어렵다.'
+      term: 'English222',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
     },
     {
       id: 3,
-      word: 'English3',
-      발음: '잉글리쉬',
-      의미: '영어',
-      예문: 'English is difficult',
-      해석: '영어는 어렵다.'
+      term: 'English333',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
     },
     {
       id: 4,
-      word: 'English4',
-      발음: '잉글리쉬',
-      의미: '영어',
-      예문: 'English is difficult',
-      해석: '영어는 어렵다.'
+      term: 'English444',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
     },
     {
       id: 5,
-      word: 'English5',
-      발음: '잉글리쉬',
-      의미: '영어',
-      예문: 'English is difficult',
-      해석: '영어는 어렵다.'
+      term: 'English555',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
+    },
+    {
+      id: 5,
+      term: 'English555',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
+    },
+    {
+      id: 5,
+      term: 'English555',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
+    },
+    {
+      id: 5,
+      term: 'English555',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
+    },
+    {
+      id: 5,
+      term: 'English555',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
+    },
+    {
+      id: 5,
+      term: 'English555',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
+    },
+    {
+      id: 5,
+      term: 'English555',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
+    },
+    {
+      id: 5,
+      term: 'English555',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
+    },
+    {
+      id: 5,
+      term: 'English555',
+      pronunciation: '잉글리쉬',
+      definition: '영어',
+      example: 'English is difficult',
+      translation: '영어는 어렵다.'
     }
   ]
 };

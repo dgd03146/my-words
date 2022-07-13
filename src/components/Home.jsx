@@ -2,12 +2,16 @@ import React from 'react';
 import Header from './Layout/Header';
 import styles from './Home.module.css';
 import Words from './Words';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-const Home = ({ onSignOut }) => {
+const Home = () => {
   return (
     <div className={styles.home}>
-      <Header onSignOut={onSignOut} />
+      <Header />
       <Words />
+      <button className={styles.addBtn}>
+        <AddCircleIcon />
+      </button>
     </div>
   );
 };
