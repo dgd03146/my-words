@@ -17,6 +17,7 @@ function App() {
   const loginCheck = async (user) => {
     if (user) {
       // user가 있으면
+
       navigate('/words');
     } else {
       navigate('/login');

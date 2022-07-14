@@ -1,4 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { async } from '@firebase/util';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { db } from '../shared/firebase';
+import { collection, getDocs, where, query } from 'firebase/firestore';
+
+export const getWords = createAsyncThunk('words/getWords', async (user_id) => {
+  let words;
+  const user_docs = await getDocs(
+    query(collection(db, 'users'), where('user_id', '==', user_id))
+  );
+  console.log(user_docs, 'user_docs');
+  user_docs.forEach((doc) => {
+    words = [...doc.data().words];
+  });
+
+  return words;
+});
 
 const initialState = {
   words: [
@@ -106,16 +122,45 @@ const initialState = {
       example: 'English is difficult',
       translation: '영어는 어렵다.'
     }
-  ]
+  ],
+  isEdit: false,
+  showBtn: true,
+  checkusername: ''
 };
 
 const wordsSlice = createSlice({
   name: 'words',
   initialState,
   reducers: {
-    add(state) {},
+    update(state, action) {},
+    add(state, action) {
+      state.words = [action.payload, ...state.words];
+    },
     remove(state) {},
-    edit(state) {}
+    isEdit(state) {
+      state.isEdit = true;
+    },
+    notIsEdit(state) {
+      state.isEdit = false;
+    },
+    showAddBtn(state) {
+      state.showBtn = true;
+    },
+    notShowAddBtn(state) {
+      state.showBtn = false;
+    }
+  },
+  extraReducers: {
+    [getWords.pending]: (state) => {
+      state.status = 'loading';
+    },
+    [getWords.fulfilled]: (state, action) => {
+      state.words = action.payload;
+      state.status = 'success';
+    },
+    [getWords.rejected]: (state, action) => {
+      state.status = 'failed';
+    }
   }
 });
 

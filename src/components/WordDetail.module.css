@@ -1,0 +1,80 @@
+.WordDetail {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.WordDetail::before {
+  content: '';
+  opacity: 0.08;
+  background-image: url('../../public/assets/background.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.topBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 1rem 0;
+}
+
+.topBox h1 {
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+.topBox svg {
+  font-size: 1.7rem;
+}
+
+.topBox button {
+  background-color: transparent;
+  padding: 0;
+}
+
+.topBox button:hover {
+  transform: scale(1.1);
+  transition: ease-in 300ms;
+}
+
+.topBox button:hover svg {
+  color: rgb(17, 92, 161);
+}
+
+.container {
+  position: relative;
+  color: #1e319d;
+  padding: 2rem;
+
+  min-width: 50vh;
+  max-width: 70vh;
+  /* background-color: gray; */
+}
+
+.container h2 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.container input {
+  width: 100%;
+  padding: 0.8rem 0.7rem;
+  border-radius: 12px;
+  border: none;
+  /* background-color: rgb(223, 234, 252); */
+
+  box-shadow: #1e319d 1px 1px 5px;
+  margin: 0.5rem 0;
+}
+
+.container input:focus {
+  outline: 1px solid #1e319d;
+}

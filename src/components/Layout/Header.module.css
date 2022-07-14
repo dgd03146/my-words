@@ -11,6 +11,10 @@
   border-bottom: 0.1px solid #1e319d;
 }
 
+.notSticky {
+  position: static;
+}
+
 .title {
   color: #1e319d;
   font-family: 'Jalnan';

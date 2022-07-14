@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Word.module.css';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { wordsActions } from '../redux/words-slice';
 
-const Word = ({ term, pronunciation, definition, example, translation }) => {
+const Word = ({
+  term,
+  pronunciation,
+  definition,
+  example,
+  translation,
+  id
+}) => {
   let navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const [check, setCheck] = useState(false);
 
@@ -15,8 +26,13 @@ const Word = ({ term, pronunciation, definition, example, translation }) => {
   };
 
   const goToEdit = () => {
-    navigate('/detail');
+    navigate('/detail/' + id);
+    dispatch(wordsActions.isEdit());
   };
+
+  useEffect(() => {
+    dispatch(wordsActions.showAddBtn());
+  }, []);
 
   return (
     <li className={`${styles.word} ${check && styles.check}`}>

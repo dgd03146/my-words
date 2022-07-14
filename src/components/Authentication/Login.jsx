@@ -7,12 +7,16 @@ import { db } from '../../shared/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../redux/auth-slice';
+import { getWords } from '../../redux/words-slice';
 
 const Login = () => {
   let navigate = useNavigate();
   const id_ref = useRef(null);
   const pw_ref = useRef(null);
-  let username = '';
+
+  let username;
+  let user_id;
+  let doc_id;
 
   const dispatch = useDispatch();
 
@@ -28,11 +32,14 @@ const Login = () => {
     );
 
     user_docs.forEach((u) => {
-      // console.log(u.data(), 'user data'); // user 정보 가지고 옴. state에 넣어서 이름 얻을 수 있다.
+      console.log(u.data(), 'user data'); // user 정보 가지고 옴. state에 넣어서 이름 얻을 수 있다.
       username = u.data().name;
+      user_id = u.data().user_id;
+      doc_id = u.id;
     });
 
-    dispatch(authActions.logIn(username));
+    dispatch(authActions.setUser({ userName: username, user_id, doc_id }));
+    // dispatch(authActions.logIn(username));
   };
 
   return (

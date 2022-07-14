@@ -5,12 +5,15 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../shared/firebase';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const SignUp = () => {
   let navigate = useNavigate();
   const id_ref = useRef(null);
   const name_ref = useRef(null);
   const pw_ref = useRef(null);
+
+  let words = useSelector((state) => state.words.words);
 
   const onSignUp = async () => {
     // validation 체크 해줘야함
@@ -20,14 +23,16 @@ const SignUp = () => {
 
     const user = await createUserWithEmailAndPassword(
       auth,
-      id_ref.current.value,
-      pw_ref.current.value
+      id_ref.current.value || '',
+      pw_ref.current.value || ''
     );
 
     const user_doc = await addDoc(collection(db, 'users'), {
       user_id: user.user.email,
-      name: name_ref.current.value
+      name: name_ref.current.value,
+      words
     }); // 회원가입 끝난 상태에서 firebaseStore에다가 저장
+
     console.log(user_doc.id);
     // input reset
     id_ref.current.value = '';
