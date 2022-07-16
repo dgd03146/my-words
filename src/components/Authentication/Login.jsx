@@ -39,7 +39,8 @@ const Login = () => {
     });
 
     dispatch(authActions.setUser({ userName: username, user_id, doc_id }));
-    // dispatch(authActions.logIn(username));
+
+    navigate('/words');
   };
 
   return (

@@ -6,6 +6,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { wordsActions } from '../redux/words-slice';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../shared/firebase';
+import { useSelector } from 'react-redux';
 
 const Word = ({
   term,
@@ -17,6 +20,8 @@ const Word = ({
 }) => {
   let navigate = useNavigate();
 
+  let words = useSelector((state) => state.words.words);
+  let doc_id = useSelector((state) => state.auth.user.doc_id);
   const dispatch = useDispatch();
 
   const [check, setCheck] = useState(false);
@@ -28,6 +33,15 @@ const Word = ({
   const goToEdit = () => {
     navigate('/detail/' + id);
     dispatch(wordsActions.isEdit());
+  };
+
+  const onDelete = async () => {
+    const deletedWords = words.filter((it) => parseInt(it.id) !== parseInt(id));
+    console.log(deletedWords, 'deletedWords');
+    await updateDoc(doc(db, 'users', doc_id), {
+      words: deletedWords
+    });
+    dispatch(wordsActions.delete(id));
   };
 
   useEffect(() => {
@@ -45,7 +59,7 @@ const Word = ({
           <button onClick={goToEdit}>
             <EditIcon />
           </button>
-          <button>
+          <button onClick={onDelete}>
             <DeleteIcon />
           </button>
         </div>

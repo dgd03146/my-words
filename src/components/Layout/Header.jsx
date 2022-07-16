@@ -5,13 +5,16 @@ import { auth } from '../../shared/firebase';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../redux/auth-slice';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   const logoutHandler = () => {
     signOut(auth);
     dispatch(authActions.logOut());
+    navigate('/login');
   };
 
   let username = useSelector((state) => state.auth.user.userName); // username redux에서 가져오기. // 이름을 가져오는데 시간이 걸린다.. 바로 가져오게???

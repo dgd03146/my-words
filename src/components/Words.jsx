@@ -3,9 +3,7 @@ import styles from './Words.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Word from './Word';
 
-import { db } from '../shared/firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import { getWords, wordsActions } from '../redux/words-slice';
+import { getWords } from '../redux/words-slice';
 
 const Words = () => {
   let dispatch = useDispatch();
@@ -13,13 +11,9 @@ const Words = () => {
 
   const words = useSelector((state) => state.words.words);
 
-  useEffect(
-    () => {
-      dispatch(getWords(user_id));
-    },
-    [user_id],
-    dispatch
-  );
+  useEffect(() => {
+    dispatch(getWords(user_id));
+  }, [user_id, dispatch]);
 
   return (
     <div className={styles.words}>

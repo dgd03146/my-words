@@ -33,11 +33,11 @@ const SignUp = () => {
       words
     }); // 회원가입 끝난 상태에서 firebaseStore에다가 저장
 
-    console.log(user_doc.id);
     // input reset
     id_ref.current.value = '';
     name_ref.current.value = '';
     pw_ref.current.value = '';
+    navigate('/login');
   };
 
   return (
